@@ -32,3 +32,14 @@
     } 
 
   ```
+- store是怎么注入每一个组件实例中，可以直接通过this.$store获取到同一个store数据对象的引用？
+  创建store实例，通过export default new vuex.Store({...})导出，在入口文件main.js，引入vuex,并通过vue.use(Vuex);然后在实例化一个Vue实例对象中，通过options的方法传入一个store给root根组件实例。这个时候根实例可以获取到一个store，通过this.$store的方式，如下面：
+  ```
+  new Vue({
+    el: '#app',
+    router,
+    store,
+    components: { App },
+    template: '<App/>'
+  })
+  ```
