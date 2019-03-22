@@ -1,2 +1,2 @@
 # learnVue
-学习Vue笔记，整理笔记
+- [vuex阅读源码和文章笔记](https://github.com/Harhao/learnVue/blob/master/Vuex/vuex.md)
