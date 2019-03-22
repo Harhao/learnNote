@@ -79,3 +79,61 @@
       }
     }
   ```
+- state和getter是不是通过new Vue()来使其变为响应式的？
+  获取state的方式在src目录下的store.js有定义,是通过一个vue实例_vm获取，而_vm是一个中央总线bus的一个vue对象实例：
+  ```
+  get state () {
+    return this._vm._data.$$state
+  }
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    }
+  })
+  function resetStoreVM (store, state, hot) {
+      const oldVm = store._vm
+
+      // bind store public getters
+      store.getters = {}
+      const wrappedGetters = store._wrappedGetters
+      const computed = {}
+      forEachValue(wrappedGetters, (fn, key) => {
+        // use computed to leverage its lazy-caching mechanism
+        //computed 对象挂载至 vue实例 _vm的computed属性上，得益于vue的计算属性特性，数据的变更同样可以同步至其他相关组件上
+        computed[key] = () => fn(store)
+        Object.defineProperty(store.getters, key, {
+          get: () => store._vm[key],
+          enumerable: true // for local getters
+        })
+      })
+
+      // use a Vue instance to store the state tree
+      // suppress warnings just in case the user has added
+      // some funky global mixins
+      const silent = Vue.config.silent
+      Vue.config.silent = true
+      store._vm = new Vue({
+        data: {
+          $$state: state
+        },
+        computed
+      })
+      Vue.config.silent = silent
+
+      // enable strict mode for new vm
+      if (store.strict) {
+        enableStrictMode(store)
+      }
+
+      if (oldVm) {
+        if (hot) {
+          // dispatch changes in all subscribed watchers
+          // to force getter re-evaluation for hot reloading.
+          store._withCommit(() => {
+            oldVm._data.$$state = null
+          })
+        }
+        Vue.nextTick(() => oldVm.$destroy())
+      }
+    } 
+  ```
