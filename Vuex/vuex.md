@@ -137,3 +137,48 @@
       }
     } 
   ```
+ - state内部是如何实现支持模块配置和模块嵌套的？
+  vuex中的子module模块是在root模块下通过modules字段定义，在vuex中通过registerMoudle注册所有的子模块,使用递归遍历方式把所有的子模块数据挂载在一个
+  root的父元素上，形成一个树形的状态树。
+    ```
+      function installModule (store, rootState, path, module, hot) {
+        const isRoot = !path.length
+        const namespace = store._modules.getNamespace(path)
+
+        // register in namespace map
+        if (module.namespaced) {
+          store._modulesNamespaceMap[namespace] = module
+        }
+
+        // set state
+        if (!isRoot && !hot) {
+          const parentState = getNestedState(rootState, path.slice(0, -1))
+          const moduleName = path[path.length - 1]
+          store._withCommit(() => {
+            Vue.set(parentState, moduleName, module.state)
+          })
+        }
+
+        const local = module.context = makeLocalContext(store, namespace, path)
+
+        module.forEachMutation((mutation, key) => {
+          const namespacedType = namespace + key
+          registerMutation(store, namespacedType, mutation, local)
+        })
+
+        module.forEachAction((action, key) => {
+          const type = action.root ? key : namespace + key
+          const handler = action.handler || action
+          registerAction(store, type, handler, local)
+        })
+
+        module.forEachGetter((getter, key) => {
+          const namespacedType = namespace + key
+          registerGetter(store, namespacedType, getter, local)
+        })
+
+        module.forEachChild((child, key) => {
+          installModule(store, rootState, path.concat(key), child, hot)
+        })
+      }
+    ```
