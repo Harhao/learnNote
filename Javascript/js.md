@@ -12,11 +12,25 @@
     ```
   - JavaScript的apply和call主要改变是在一个新的对象中添加添加一个新函数，然后调用函数,删除函数定义，最后返回函数返回值。
     ```bash
+    //call自定义实现
     Function.prototype.newCall = function(context){
       context = context || window;
       context.fn = this;
       const args = [...arguments].slice(1);
       const result = context.fn(...args);
+      delete context.fn;
+      return result;
+    }
+    //apply自定义实现
+    Function.prototype.newApply = function(context){
+      context = context || window;
+      context.fn = this;
+      let result;
+      if(arguments[1]){
+        result = context.fn(...arguments[1]);
+      }else{
+        result = context.fn();
+      }
       delete context.fn;
       return result;
     }
