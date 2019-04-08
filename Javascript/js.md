@@ -35,4 +35,8 @@
       return result;
     }
     ```
+  - JavaScript的bind实现
+    ```
+    
+    ```
         
