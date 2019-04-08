@@ -35,8 +35,10 @@
       return result;
     }
     ```
-  - JavaScript的bind实现
-    ```
-    
+  - JavaScript的bind实现,bind函数返回的是一个函数,并且改变this的指向
+    ```bash
+    Function.protype.newBind = function(context){
+      context = context || window;
+    }
     ```
         
