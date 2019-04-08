@@ -24,6 +24,12 @@
     //apply自定义实现
     Function.prototype.newApply = function(context){
       context = context || window;
+      /*
+      * this的值为需要apply的函数
+      * 例如: 
+      * let a = {};
+      * getValue.newApply(a,["hello","world"]);
+      */
       context.fn = this;
       let result;
       if(arguments[1]){
