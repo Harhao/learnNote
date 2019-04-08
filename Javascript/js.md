@@ -1,4 +1,4 @@
-### JavaScript知识文集
+### JavaScript学习笔记
 #### 1. 自定义实现一个call函数和apply，改变this的指向问题。call函数传入的是一个参数列表，而apply传入的是一个参数数组
   - JavaScript的apply和call函数传统使用方法
   
