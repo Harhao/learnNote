@@ -122,3 +122,10 @@
       return [..._this,...arr];
     }
     ```
+  - JavaScript实现一个类Array.concat函数但是数组元素不可有相同
+    ```bash
+     Array.prototype.myConCat = function(arr){
+      const _this = this;
+      return new Set([..._this,...arr]);
+    }
+    ```
