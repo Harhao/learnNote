@@ -79,4 +79,18 @@
       return value;
     }
     ```
+ #### 2. 用原生JavaScript实现一个queryUrlParameter函数。
+  - 例如 https://www.baidu.com/s?ie=UTF-8&wd=hello取出参数key和value组成{"ie":"UTF-8","wd":"hello"}对象参数字面量
+    ```bash
+    function queryUrlParameter(url){
+      let obj = {};
+      const arr = url.split('?');
+      const params = arr[1].split("&");
+      params.forEach(val=>{
+        const tmpArr = val.split('=');
+        obj[tmpArr[0]] = tmpArr[1];
+      });
+      return obj;
+    }
+    ```
  #### 2. 防抖与节流,函数的防抖与节流都是多次防止触发事件函数，造成页面卡顿。在如滚动事件、表单提交按钮防止过快多次反复触发使用居多，在开发随着鼠标滚动dom元素进入视野，开始执行动画效果需要监听检测鼠标滚动事件，这个时候防抖与节流发挥很大的效果。
