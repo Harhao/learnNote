@@ -69,7 +69,7 @@
       return value;
     }
     ```
-  - JavaScript的parseFloatt实现
+  - JavaScript的parseFloat实现
     ```bash
     function parseFloat(value){
       if(isNaN(value)){
