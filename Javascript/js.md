@@ -65,7 +65,7 @@
         console.error(`${value} is not a number`);
         return 'NaN';
       }
-      value = value>0?Math.floor(value):(-1*Math.floor(value));
+      value = value>0?Math.floor(value):(-1*Math.floor(Math.abs(value)));
       return value;
     }
     ```
