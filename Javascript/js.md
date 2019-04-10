@@ -63,9 +63,10 @@
     function parseInt(value){
       if(isNaN(value)){
         console.error(`${value} is not a number`);
-        return;
+        return 'NaN';
       }
-      return Math.floor(value);
+      value = value>0?Math.floor(value):(-1*Math.floor(Math.abs(value)));
+      return value;
     }
     ```
   - JavaScript的parseFloatt实现
@@ -73,9 +74,9 @@
     function parseFloat(value){
       if(isNaN(value)){
         console.error(`${value} is not a number`);
-        return;
+        return NaN;
       }
-      return value.toFixed(2);
+      return value;
     }
     ```
  #### 2. 防抖与节流,函数的防抖与节流都是多次防止触发事件函数，造成页面卡顿。在如滚动事件、表单提交按钮防止过快多次反复触发使用居多，在开发随着鼠标滚动dom元素进入视野，开始执行动画效果需要监听检测鼠标滚动事件，这个时候防抖与节流发挥很大的效果。
