@@ -70,7 +70,7 @@
     ```
   - JavaScript的parseFloatt实现
     ```bash
-    funciton parseFloat(value){
+    function parseFloat(value){
       if(isNaN(value)){
         console.error(`${value} is not a number`);
         return;
