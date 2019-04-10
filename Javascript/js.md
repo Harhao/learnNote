@@ -100,7 +100,11 @@
       if(url.indexOf('?') <0){
         return obj;
       }
-      let reg = /([?&])=()/g;
+      let reg =/([^&?=]+)=([^&?=])+/g;
+      url.replace(reg,function(){
+        obj[arguments[1]] = arguments[2];
+      });
+      return obj;
     }
     ```
  #### 4. 用原生JavaScript实现一个Array.concat函数。
