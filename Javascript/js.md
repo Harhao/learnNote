@@ -150,3 +150,21 @@
        return '1'+str;     
     }
     ```
+ #### 7. javascript统计字符串出现次数函数
+  - count函数
+    ```bash
+    function count(str){
+      let obj = {};
+      for(let i=0;i<str.length;i++){
+          const key = str[i];
+          if(obj[key]){
+              obj[key]++;
+          }else{
+              obj[key] = 1;
+          }
+      }
+        for(let key in obj){
+            console.log(`${key} count is ${obj[key]}`);
+        }
+    }
+    ```
