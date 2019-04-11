@@ -129,7 +129,7 @@
       return new Set([..._this,...arr]);
     }
     ```
- #### 5. 用原生JavaScript实现一个获取字符串真实的长度
+ #### 5. 用原生JavaScript实现一个获取字符串真实的长度,直接通过length获取字符串长度，对于\u0xfff以上的四字节字符会被认为是两个字符，通过ES6的正则修饰符\u可以正确匹配四字节字符串
   - JavaScript实现一个codePointLength函数
     ```bash
     function codePointLength(str){
