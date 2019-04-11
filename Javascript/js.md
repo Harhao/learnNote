@@ -63,7 +63,7 @@
     function parseInt(value){
       if(isNaN(value)){
         console.error(`${value} is not a number`);
-        return 'NaN';
+        return NaN;
       }
       value = value>0?Math.floor(value):(-1*Math.floor(Math.abs(value)));
       return value;
