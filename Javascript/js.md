@@ -137,3 +137,16 @@
       return result?result.length:0;
     }
     ```
+ #### 5. javascript实现一个转换二进制的函数
+  - translate函数
+    ```bash
+    function translate(value) {
+       let str ='';
+        while(parseInt(value/2)!= 0){
+           var tmp = value%2;
+           value=parseInt(value/2);
+           str =  tmp + str;
+       }
+       return '1'+str;     
+    }
+    ```
