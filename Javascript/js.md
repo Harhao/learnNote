@@ -129,3 +129,11 @@
       return new Set([..._this,...arr]);
     }
     ```
+ #### 5. 用原生JavaScript实现一个获取字符串真实的长度
+  - JavaScript实现一个codePointLength函数
+    ```bash
+    function codePointLength(str){
+      const result = str.match(/[\s\S]/gu);
+      return result?result.length:0;
+    }
+    ```
