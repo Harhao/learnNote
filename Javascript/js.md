@@ -137,7 +137,7 @@
       return result?result.length:0;
     }
     ```
- #### 5. javascript实现一个转换二进制的函数
+ #### 6. javascript实现一个转换二进制的函数
   - translate函数
     ```bash
     function translate(value) {
