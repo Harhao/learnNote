@@ -168,3 +168,69 @@
         }
     }
     ```
+  #### 8. 实现一个函数遍历一个树结构，并且根据id值输出node的节点信息
+  - getNodeById函数传入要搜索的数据，id是要在数据中匹配的id值，这里利用了递归算法遍历查找node节点
+    ```bash
+    var data = {
+        id: "1",
+        name: "root",
+        children: [
+          {
+            id: "2",
+            name: "child2",
+            children: [
+              {
+                id: "3",
+                name: "child3",
+                children: [
+                  {
+                    id: "3",
+                    name: "child3",
+                    children: false
+                  }
+                ]
+              },
+              {
+                id: "4",
+                name: "child4",
+                children: false
+              }
+            ]
+          },
+          {
+            id: "5",
+            name: "child5",
+            children: [
+              {
+                id: "6",
+                name: "child6",
+                children: [
+                  {
+                    id: "7",
+                    name: "child7",
+                    children: false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: "8",
+            name: "child8",
+            children: false
+          }
+        ]
+      };
+      function getNodeById(data, id) {
+        if (data.id == id) {
+          return data;
+        }
+        if (data.children) {
+          data.children.forEach(value => {
+            console.log(value);
+            return getNodeById(value, id);
+          });
+        }
+      }
+      console.log(getNodeById(data, 8));
+    ```
