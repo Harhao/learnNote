@@ -41,52 +41,67 @@
   - 实现一个单向链表
   
     ```bash
-    class Node {
-      constructor(value, next) {
-        this.next = next;
-        this.value = value;
-      }
-    }
-    class ListChain {
-      constructor() {
-        this.size = 0;
-        this.header = new Node(null, null);
-      }
-      find(header, currentIndex, index) {
-        if (currentIndex === index) {
-          return header;
+    class Node{
+        constructor(value,next){
+            this.next = next;
+            this.value = value;
         }
-        return this.find(header.next, ++currentIndex, index);
-      }
-      addNode(value, index) {
-        let prevNode = this.find(this.header, 0, index);
-        prevNode.next = new Node(value, prevNode.next);
-        this.size++;
-        return prevNode.next;
-      }
-      removeNode(index) {
-        let prevNode = this.find(this.header, 0, index);
-        let node = prevNode.next;
-        prevNode.next = node.next;
-        node.next = null;
-        this.size--;
-        return node;
-      }
-      insertNode(value, index) {
-        return this.addNode(value, index);
-      }
-      removeFirstNode() {
-        return this.removeNode(0);
-      }
-      removeLastNode() {
-        return this.removeNode(this.size);
-      }
     }
+    class LinkChain{
+        constructor(){
+            this.size = 0;
+            this.header = new Node(null,null);
+        }
+        find(header,currentIndex,index){
+            if(index === currentIndex){
+                return header;
+            }
+            return this.find(header.next,++currentIndex,index);
+        }
+        addNode(value,index){
+            let prevNode = this.find(this.header,0,index);
+            prevNode.next = new Node(value,prev.next);
+            this.size++;
+            return prevNode.next;
+        }
+        removeNode(index){
+            let prevNode = this.find(this.header,0,index);
+            let node = prevNode.next;
+            prevNode.next = node.next;
+            node.next =null;
+            this.size --;
+            return node;
+        }
+        insertNode(value,index){
+            this.addNode(value,index);
+        }
+        removeFirstNode(){
+            return this.removeNode(0);
+        }
+        removeLastNode(){
+            return this.removeNode(this.size);
+        }
+        isEmpty(){
+            return this.size === 0;
+        }
+        getSize(){
+            return this.size;
+        }
+        getNode(index){
+            this.checkIndex(index);
+            if(this.isEmpty())
+                return;
+            return this.find(this.header,0,index).next;
+        }
+        checkIndex(index){
+            if(index <0 || index>this.size)
+                throw Error("index error");
+        }
 
-    const link = new ListChain();
-    link.addNode({name:'huahao',age:12},0);
-    link.addNode({name:'kiwis',age:12},1);
-    link.addNode({name:'harhao',age:13},2);
-    link.insertNode({name:'zouyang',age:14},0);
-    console.log(JSON.stringify(link));
+    }
+    const chain = new LinkChain();
+    console.log(chain.addNode({Name:"kiwis",age:12},0))
+    console.log(chain.addNode({Name:"harhao",age:13},1))
+    console.log(chain.insertNode({Name:'Miss chun',age:14},0))
+    console.log(chain);
     ```
