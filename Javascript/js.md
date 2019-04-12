@@ -255,3 +255,12 @@
     alert(foo + bar);
     //result => alert("Hello World") =>bar is not defined(error);
     ```
+  - setTimeout不一定会在指定的时间限制内执行函数，因为JavaScript是单线程执行，会把需要执行的放进队列，当当前上下文执行栈中执行完，然后把setTimeout从队列中取出执行，在HTML5中规定就算setTimeout设置的延迟0秒，也会被设置为4毫秒，因为最短时间延迟为4毫秒。其他的标准设置setTimeout最短延迟为10毫秒。
+    ```
+    console.log("one");
+    setTimeout(()=>{
+        console.log("two");
+    },0);
+    console.log("three");
+    // one =>three =>two
+    ```
