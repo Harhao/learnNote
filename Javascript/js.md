@@ -11,6 +11,7 @@
     getValue.apply(a,["hello","world"]);//=> print "hello world"
     ```
   - JavaScript的apply和call主要改变是在一个新的对象中添加添加一个新函数，然后调用函数,删除函数定义，最后返回函数返回值。
+  
     ```bash
     //call自定义实现
     Function.prototype.newCall = function(context){
@@ -42,6 +43,7 @@
     }
     ```
   - JavaScript的bind实现,bind函数返回的是一个函数,并且改变this的指向
+  
     ```bash
     Function.protype.newBind = function(context){
       if(typeof this != 'function'){
@@ -59,6 +61,7 @@
     ```
  #### 2. 用原生JavaScript实现一个parseInt函数和parseFloat函数。
   - JavaScript的parseInt实现
+  
     ```bash
     function parseInt(value){
       if(isNaN(value)){
@@ -81,6 +84,7 @@
     ```
  #### 3. 用原生JavaScript实现一个queryUrlParameter函数。
   - 例如 `https://www.baidu.com/s?ie=UTF-8&wd=hello` 取出参数key和value组成{"ie":"UTF-8","wd":"hello"}对象参数字面量
+  
     ```bash
     function queryUrlParameter(url){
       let obj = {};
@@ -109,6 +113,7 @@
     ```
  #### 4. 用原生JavaScript实现一个Array.concat函数。
   - JavaScript实现一个类Array.concat函数
+  
     ```bash
     Array.prototype.myConCat = function(arr){
       const _this = this;
@@ -131,6 +136,7 @@
     ```
  #### 5. 用原生JavaScript实现一个获取字符串真实的长度,直接通过length获取字符串长度，对于\u0xfff以上的四字节字符会被认为是两个字符，通过ES6的正则修饰符\u可以正确匹配四字节字符串
   - JavaScript实现一个codePointLength函数
+  
     ```bash
     function codePointLength(str){
       const result = str.match(/[\s\S]/gu);
@@ -139,6 +145,7 @@
     ```
  #### 6. javascript实现一个转换二进制的函数
   - translate函数
+  
     ```bash
     function translate(value) {
        let str ='';
@@ -152,6 +159,7 @@
     ```
  #### 7. javascript统计字符串出现次数函数
   - count函数
+  
     ```bash
     function count(str){
       let obj = {};
@@ -170,6 +178,7 @@
     ```
   #### 8. 实现一个函数遍历一个树结构，并且根据id值输出node的节点信息
   - getNodeById函数传入要搜索的数据，id是要在数据中匹配的id值，这里利用了递归算法遍历查找node节点
+  
     ```bash
     var data = {
         id: "1",
@@ -236,6 +245,7 @@
     ```
  #### 9. 闭包作用域和变量提升问题
   - setTimeout延迟执行
+  
     ```bash
     var a = 6;
     setTimeout(function(){
@@ -246,7 +256,8 @@
     //=> 66
     ```
   - 作用域闭包限制
-    ```
+  
+    ```bash
     var foo = "Hello";
     (function(){
         var bar = "World";
@@ -256,7 +267,8 @@
     //result => alert("Hello World") =>bar is not defined(error);
     ```
   - setTimeout不一定会在指定的时间限制内执行函数，因为JavaScript是单线程执行，会把需要执行的放进队列，当当前上下文执行栈中执行完，然后把setTimeout从队列中取出执行，在HTML5中规定就算setTimeout设置的延迟0秒，也会被设置为4毫秒，因为最短时间延迟为4毫秒。其他的标准设置setTimeout最短延迟为10毫秒。
-    ```
+  
+    ```bash
     console.log("one");
     setTimeout(()=>{
         console.log("two");
