@@ -234,3 +234,14 @@
       }
       console.log(getNodeById(data, 8));
     ```
+ #### 9. 闭包作用域和变量提升问题
+  - setTimeout延迟执行
+    ```bash
+    var a = 6;
+    setTimeout(function(){
+        alert(a);
+        a = 666;
+    },1000);
+    a = 66;
+    //=> 66
+    ```
