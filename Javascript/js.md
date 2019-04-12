@@ -245,3 +245,13 @@
     a = 66;
     //=> 66
     ```
+  - 作用域闭包限制
+    ```
+    var foo = "Hello";
+    (function(){
+        var bar = "World";
+        alert(foo+bar);
+    })();
+    alert(foo + bar);
+    //result => alert("Hello World") =>bar is not defined(error);
+    ```
