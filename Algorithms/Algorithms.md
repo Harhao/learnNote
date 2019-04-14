@@ -103,5 +103,4 @@
     console.log(chain.addNode({Name:"kiwis",age:12},0))
     console.log(chain.addNode({Name:"harhao",age:13},1))
     console.log(chain.insertNode({Name:'Miss chun',age:14},0))
-    console.log(chain);
     ```
