@@ -104,3 +104,34 @@
     chain.addNode({Name:"harhao",age:13},1)
     chain.insertNode({Name:'Miss chun',age:14},0)
     ```
+#### 4. 利用JavaScript实现一个BST树的操作
+  - 二叉搜索树的特点是父节点比左节点值大，比右节点值小
+  
+    ```bash
+    class Node {
+      constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+      }
+    }
+    class BSTree {
+      constructor() {
+        this.root = null;
+      }
+      addNode(value) {
+        this.root = this._addChild(this.root, value);
+      }
+      _addChild(node, val) {
+        if (!node) {
+          return new Node(value);
+        }
+        if (val > node.value) {
+          node.right = this._addChild(node.right, val);
+        } else if (val < node.value) {
+          node.left = this._addChild(node.left, val);
+        }
+        return node;
+      }
+    }
+    ```
