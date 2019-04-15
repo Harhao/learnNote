@@ -283,4 +283,7 @@
     function count(str){
       return [...str].length;
     }
+    function count(str){
+      return Array.from(str).length;
+    }
     ```
