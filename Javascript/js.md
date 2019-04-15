@@ -276,3 +276,11 @@
     console.log("three");
     // one =>three =>two
     ```
+ #### 10. javascript避免避免 JavaScript 将大于\uFFFF的 Unicode 字符，算作两个字符的 bug。
+  - count函数
+  
+    ```bash
+    function count(str){
+      return [...str].length;
+    }
+    ```
