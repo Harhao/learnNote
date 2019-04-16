@@ -276,7 +276,7 @@
     console.log("three");
     // one =>three =>two
     ```
- #### 10. javascript避免避免 JavaScript 将大于\uFFFF的 Unicode 字符，算作两个字符的 bug。
+ #### 10. javascript避免 JavaScript 将大于\uFFFF的 Unicode 字符，算作两个字符的 bug。
   - count函数
   
     ```bash
@@ -285,5 +285,13 @@
     }
     function count(str){
       return Array.from(str).length;
+    }
+    ```
+ #### 11. 实现ES6的Array.from和rest。
+  - 自定义实现Array.from函数
+  
+    ```bash
+    function toArray(obj){
+      return [].slice.call(obj);
     }
     ```
