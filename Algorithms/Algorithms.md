@@ -133,5 +133,9 @@
         }
         return node;
       }
+      getMaxNode(){
+      },
+      getMinNode(){
+      }
     }
     ```
