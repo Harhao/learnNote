@@ -134,12 +134,12 @@
         return node;
       }
       getMaxNode(node){
-        if(!node)
+        if(!node.right)
           return node;
         return this.getMaxNode(node.right);
       }
       getMinNode(root){
-         if(!node)
+         if(!node.left)
           return node;
         return this.getMinNode(node.left);
       }
