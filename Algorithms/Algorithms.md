@@ -133,9 +133,15 @@
         }
         return node;
       }
-      getMaxNode(){
-      },
-      getMinNode(){
+      getMaxNode(node){
+        if(!node)
+          return node;
+        return this.getMaxNode(node.right);
+      }
+      getMinNode(root){
+         if(!node)
+          return node;
+        return this.getMinNode(node.left);
       }
     }
     ```
