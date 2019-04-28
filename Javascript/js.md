@@ -156,6 +156,9 @@
        }
        return '1'+str;     
     }
+    function translate2(val){
+      return val.toString(2);
+    }
     ```
  #### 7. javascript统计字符串出现次数函数
   - count函数
