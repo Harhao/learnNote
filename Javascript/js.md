@@ -156,6 +156,7 @@
        }
        return '1'+str;     
     }
+    //JavaScript 的toString特性
     function translate2(val){
       return val.toString(2);
     }
