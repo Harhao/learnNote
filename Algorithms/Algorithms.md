@@ -36,6 +36,8 @@
         return this.stack.length;
       }
     }
+    
+   //优先队列
     ```
 #### 3. 利用JavaScript实现一个链表
   - 实现一个单向链表
