@@ -156,7 +156,7 @@
        }
        return '1'+str;     
     }
-    //JavaScript 的toString特性
+    //JavaScript 的toString特性，还可以穿入不同数字表示多进制
     function translate2(val){
       return val.toString(2);
     }
