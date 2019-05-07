@@ -36,8 +36,6 @@
         return this.stack.length;
       }
     }
-    
-   //优先队列
     ```
 #### 3. 利用JavaScript实现一个链表
   - 实现一个单向链表
@@ -148,3 +146,39 @@
     }
     ```
 #### 5. 利用JavaScript实现一个优先队列
+  - 优先队列的特点是根据权重确定元素加入队列的位置(插队操作),比如医院的急诊室根据病情危急情况，优先救助比较急的患者。优先队列也是这个操作
+  
+    ```bash
+    class Node{
+      constructor(value,prority){
+        this.value = value;
+        this.prority = prority;
+      }
+    }
+    class Queue{
+      constructor(){
+        this.queue = [];
+      }
+      enQueue(node){
+        //如果当前队列为空
+        if(!this.queue){
+          this.queue.push(node);
+          return;
+        }
+        this.queue.forEach((element,index)=>{
+         if(index == this.queue.length){
+          this.queue.push(node);
+         }
+         if(element.prority <= node.prority){
+          this.queue.splice(index,0,node);
+         }
+        });
+      }
+      deQueue(){
+        this.queue.shift();
+      }
+      getLength(){
+        return this.stack.length;
+      }
+    }
+    ```
