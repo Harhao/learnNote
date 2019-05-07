@@ -166,6 +166,7 @@
           return;
         }
         this.queue.forEach((element,index)=>{
+         //如果是优先权最小的元素入队列
          if(index == this.queue.length){
           this.queue.push(node);
          }
